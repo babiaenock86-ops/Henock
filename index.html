@@ -24,7 +24,8 @@
   .acc span { display: block; font-size: 42px; margin-bottom: 6px; }
   .wa { position: fixed; bottom: 18px; right: 18px; background: #25d366; color: white; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,.4); }
   footer { text-align: center; padding: 20px 20px 90px; font-size: 13px; opacity: .7; }
-      .recherche { width: 100%; box-sizing: border-box; padding: 14px; border-radius: 10px; border: none; font-size: 16px; margin-bottom: 15px; }
+  .recherche { width: 100%; box-sizing: border-box; padding: 14px; border-radius: 10px; border: none; font-size: 16px; margin-bottom: 10px; }
+  .aide { text-align: center; opacity: .8; font-size: 14px; margin: 0 0 15px; }
   #vide { text-align: center; display: none; }
 </style>
 </head>
@@ -33,11 +34,14 @@
   <img src="Kinshasa%20Teamwear%20Logo.PNG" alt="MAILLOT A KIN">
   <p>MAILLOTS & SPORTSWEAR · KINSHASA</p>
 </header>
-<section> 
+<section>
   <input class="recherche" id="recherche" type="search" placeholder="🔍 Rechercher (ex : nike, adidas, crampons)">
+  <p class="aide">Tape une marque ou un club pour voir tous nos articles (nike, adidas, puma, psg...)</p>
   <p id="vide">Aucun résultat. Écris-nous sur WhatsApp, on peut peut-être le trouver !</p>
+
   <h2>Nos maillots</h2>
-   <div class="carte" data-mots="nike barca barcelone">
+
+  <div class="carte" data-vedette="1" data-mots="nike barca barcelone">
     <img src="07405881-2946-435f-a05e-c10e0ca87309.JPG" alt="Maillot FC Barcelone">
     <div class="info">
       <h3>FC Barcelone, édition noir et violet</h3>
@@ -48,7 +52,7 @@
     </div>
   </div>
 
-   <div class="carte" data-mots="adidas real madrid">
+  <div class="carte" data-mots="adidas real madrid">
     <img src="ff87788c-62cd-4f66-bd3d-046ad0ee55e3.JPG" alt="Maillot Real Madrid">
     <div class="info">
       <h3>Real Madrid, third vert</h3>
@@ -59,7 +63,7 @@
     </div>
   </div>
 
-   <div class="carte" data-mots="puma manchester city">
+  <div class="carte" data-mots="puma manchester city">
     <img src="cde8250d-b5b9-43a5-bb2e-5a59765e94e1.JPG" alt="Maillot Manchester City">
     <div class="info">
       <h3>Manchester City, noir et or</h3>
@@ -69,6 +73,14 @@
       <a class="btn" href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20commander%20le%20maillot%20Manchester%20City%20noir%20et%20or">Commander sur WhatsApp</a>
     </div>
   </div>
+
+  <div id="liste-maillots"></div>
+
+  <h2>Crampons</h2>
+  <div id="liste-crampons"></div>
+
+  <h2>Gants de gardien</h2>
+  <div id="liste-gants"></div>
 
   <div class="box">
     <h3>Livraison à Kinshasa</h3>
@@ -100,20 +112,53 @@
 </section>
 <footer>© MAILLOT A KIN · Kinshasa, RDC</footer>
 <a class="wa" href="https://wa.me/243824814041" aria-label="WhatsApp">💬</a>
-  <script>
+
+<script>
+const articles = [
+ {cat:'maillots', nom:'PSG, extérieur blanc', img:'1ae86674-5456-4d04-96c8-dcbc060b2389.JPG', prix:'20 $', perso:'25 $ avec personnalisation (nom + numéro)', info:'Tailles : S, M, L, XL', mots:'nike psg paris'},
+ {cat:'maillots', nom:'Aston Villa, bordeaux', img:'16917675-76cb-45f6-869d-85ebc5b59c14.JPG', prix:'20 $', perso:'25 $ avec personnalisation (nom + numéro)', info:'Tailles : S, M, L, XL', mots:'adidas aston villa'},
+ {cat:'maillots', nom:'Tottenham, domicile blanc', img:'b05e7a1e-63ac-4721-9abc-262098045efc.JPG', prix:'20 $', perso:'25 $ avec personnalisation (nom + numéro)', info:'Tailles : S, M, L, XL', mots:'nike tottenham spurs'},
+ {cat:'maillots', nom:'Juventus, noir et or', img:'449b4459-d5f9-4188-922b-68559e5ff58e.JPG', prix:'20 $', perso:'25 $ avec personnalisation (nom + numéro)', info:'Tailles : S, M, L, XL', mots:'adidas juventus juve'},
+ {cat:'maillots', nom:'Bayern Munich, violet et rouge', img:'125a189e-3495-4102-8b9c-f4ea48b53205.JPG', prix:'20 $', perso:'25 $ avec personnalisation (nom + numéro)', info:'Tailles : S, M, L, XL', mots:'adidas bayern munich'},
+
+ {cat:'crampons', nom:'Nike Air Zoom, bleu et rose', img:'7aaff630-c239-432c-a1bd-2ad28a2cb444.JPG', prix:'XX $', info:'Pointures : nous demander', mots:'nike crampons chaussures'},
+ {cat:'crampons', nom:'Nike Air Zoom, rose et orange', img:'b266a7cb-26b9-486f-9b8b-25c889e8fdba.JPG', prix:'XX $', info:'Pointures : nous demander', mots:'nike crampons chaussures'},
+ {cat:'crampons', nom:'Nike Vapor, rose et blanc', img:'ee5d6d6a-eb42-48de-a84b-402e6dcabadb.JPG', prix:'XX $', info:'Pointures : nous demander', mots:'nike crampons chaussures'},
+ {cat:'crampons', nom:'Nike Air Zoom, noir et rose', img:'1c90db5c-9ebc-45f0-b98c-35855bd63d21.JPG', prix:'XX $', info:'Pointures : nous demander', mots:'nike crampons chaussures'},
+ {cat:'crampons', nom:'Nike Vapor, rouge et or', img:'70e65ccd-ed21-42b4-9a46-06465b12f9f5.JPG', prix:'XX $', info:'Pointures : nous demander', mots:'nike crampons chaussures'},
+ {cat:'crampons', nom:'adidas Y-3, dragon et tigre', img:'5bbc3053-d6da-4e77-9f07-25e413aa0607.JPG', prix:'XX $', info:'Pointures : nous demander', mots:'adidas crampons chaussures y3'},
+ {cat:'crampons', nom:'adidas, noir et multicolore', img:'145fc687-c764-4e55-abd8-5464a9a7d6de.JPG', prix:'XX $', info:'Pointures : nous demander', mots:'adidas crampons chaussures'},
+
+ {cat:'gants', nom:'adidas Predator, gris et rouge', img:'854776b3-56ef-4c09-9507-dbdd18169a3f.JPG', prix:'XX $', info:'Tailles : nous demander', mots:'adidas gants gardien predator'},
+ {cat:'gants', nom:'adidas, vert et rose', img:'70dd41ac-845b-4b91-b0d7-39f7498fde4e.JPG', prix:'XX $', info:'Tailles : nous demander', mots:'adidas gants gardien'},
+ {cat:'gants', nom:'adidas Predator, bleu et rose', img:'470afc52-ed9a-43dd-aa3c-75e290baf0bf.JPG', prix:'XX $', info:'Tailles : nous demander', mots:'adidas gants gardien predator'},
+ {cat:'gants', nom:'Puma, rose et bleu', img:'685abd68-8a4d-43b6-88a7-578fe05be573.JPG', prix:'XX $', info:'Tailles : nous demander', mots:'puma gants gardien'}
+];
+
+const vus = {};
+articles.forEach(a => {
+  const vedette = (a.cat !== 'maillots' && !vus[a.cat]) ? ' data-vedette="1"' : '';
+  vus[a.cat] = true;
+  const msg = encodeURIComponent('Bonjour, je veux commander : ' + a.nom);
+  const perso = a.perso ? '<div class="perso">' + a.perso + '</div>' : '';
+  document.getElementById('liste-' + a.cat).innerHTML +=
+    '<div class="carte"' + vedette + ' data-mots="' + a.mots + '"><img src="' + a.img + '" alt="' + a.nom + '"><div class="info"><h3>' + a.nom + '</h3><div class="prix">' + a.prix + '</div>' + perso + '<p>' + a.info + '</p><a class="btn" href="https://wa.me/243824814041?text=' + msg + '">Commander sur WhatsApp</a></div></div>';
+});
+
 const champ = document.getElementById('recherche');
-champ.addEventListener('input', () => {
+function filtrer() {
   const q = champ.value.toLowerCase().trim();
   let trouve = 0;
   document.querySelectorAll('.carte, .acc a').forEach(el => {
     const texte = (el.textContent + ' ' + (el.dataset.mots || '')).toLowerCase();
-    const ok = texte.includes(q);
+    const ok = q === '' ? (el.matches('.acc a') || el.dataset.vedette === '1') : texte.includes(q);
     el.style.display = ok ? '' : 'none';
     if (ok) trouve++;
   });
-  document.getElementById('vide').style.display = trouve ? 'none' : 'block';
-});
+  document.getElementById('vide').style.display = (q !== '' && !trouve) ? 'block' : 'none';
+}
+champ.addEventListener('input', filtrer);
+filtrer();
 </script>
-
 </body>
 </html>
