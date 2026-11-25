@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MAILLOT A KIN</title>
+    .recherche { width: 100%; box-sizing: border-box; padding: 14px; border-radius: 10px; border: none; font-size: 16px; margin-bottom: 15px; }
+  #vide { text-align: center; display: none; }
 <style>
   body { margin: 0; font-family: Arial, sans-serif; color: white; background: linear-gradient(135deg, #000 0%, #1a1a8c 50%, #3030d0 100%); background-attachment: fixed; }
   header { text-align: center; padding: 30px 15px 10px; }
@@ -31,37 +33,38 @@
   <img src="Kinshasa%20Teamwear%20Logo.PNG" alt="MAILLOT A KIN">
   <p>MAILLOTS & SPORTSWEAR · KINSHASA</p>
 </header>
-<section>
+<section> 
+  <input class="recherche" id="recherche" type="search" placeholder="🔍 Rechercher (ex : nike, adidas, crampons)">
+  <p id="vide">Aucun résultat. Écris-nous sur WhatsApp, on peut peut-être le trouver !</p>
   <h2>Nos maillots</h2>
-
-  <div class="carte">
+   <div class="carte" data-mots="nike barca barcelone">
     <img src="07405881-2946-435f-a05e-c10e0ca87309.JPG" alt="Maillot FC Barcelone">
     <div class="info">
       <h3>FC Barcelone, édition noir et violet</h3>
-      <div class="prix">15 $</div>
-      <div class="perso">20 $ avec personnalisation (nom + numéro)</div>
+      <div class="prix">20 $</div>
+      <div class="perso">25 $ avec personnalisation (nom + numéro)</div>
       <p>Tailles : S, M, L, XL</p>
       <a class="btn" href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20commander%20le%20maillot%20FC%20Barcelone%20noir%20et%20violet">Commander sur WhatsApp</a>
     </div>
   </div>
 
-  <div class="carte">
+   <div class="carte" data-mots="adidas real madrid">
     <img src="ff87788c-62cd-4f66-bd3d-046ad0ee55e3.JPG" alt="Maillot Real Madrid">
     <div class="info">
       <h3>Real Madrid, third vert</h3>
-      <div class="prix">15 $</div>
-      <div class="perso">20 $ avec personnalisation (nom + numéro)</div>
+      <div class="prix">20 $</div>
+      <div class="perso">25 $ avec personnalisation (nom + numéro)</div>
       <p>Tailles : S, M, L, XL</p>
       <a class="btn" href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20commander%20le%20maillot%20Real%20Madrid%20vert">Commander sur WhatsApp</a>
     </div>
   </div>
 
-  <div class="carte">
+   <div class="carte" data-mots="puma manchester city">
     <img src="cde8250d-b5b9-43a5-bb2e-5a59765e94e1.JPG" alt="Maillot Manchester City">
     <div class="info">
       <h3>Manchester City, noir et or</h3>
-      <div class="prix">15 $</div>
-      <div class="perso">20 $ avec personnalisation (nom + numéro)</div>
+      <div class="prix">20 $</div>
+      <div class="perso">25 $ avec personnalisation (nom + numéro)</div>
       <p>Tailles : S, M, L, XL</p>
       <a class="btn" href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20commander%20le%20maillot%20Manchester%20City%20noir%20et%20or">Commander sur WhatsApp</a>
     </div>
@@ -97,5 +100,20 @@
 </section>
 <footer>© MAILLOT A KIN · Kinshasa, RDC</footer>
 <a class="wa" href="https://wa.me/243824814041" aria-label="WhatsApp">💬</a>
+  <script>
+const champ = document.getElementById('recherche');
+champ.addEventListener('input', () => {
+  const q = champ.value.toLowerCase().trim();
+  let trouve = 0;
+  document.querySelectorAll('.carte, .acc a').forEach(el => {
+    const texte = (el.textContent + ' ' + (el.dataset.mots || '')).toLowerCase();
+    const ok = texte.includes(q);
+    el.style.display = ok ? '' : 'none';
+    if (ok) trouve++;
+  });
+  document.getElementById('vide').style.display = trouve ? 'none' : 'block';
+});
+</script>
+
 </body>
 </html>
