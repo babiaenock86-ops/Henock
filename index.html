@@ -6,51 +6,74 @@
 <title>MAILLOT A KIN</title>
 <style>
   body { margin: 0; font-family: Arial, sans-serif; color: #12124a; background: linear-gradient(180deg, #ffffff 0%, #e8ebff 45%, #c9d0ff 100%); background-attachment: fixed; }
-  .barre { position: sticky; top: 0; z-index: 20; display: flex; gap: 10px; padding: 10px 15px; background: #1a1a8c; }
+  .haut { position: sticky; top: 0; z-index: 20; background: #1a1a8c; }
+  .barre { display: flex; gap: 10px; padding: 10px 15px 6px; }
   .recherche { flex: 1; min-width: 0; box-sizing: border-box; padding: 12px; border-radius: 10px; border: none; font-size: 16px; }
-  .panierbtn { background: #ff7a00; color: white; border: 0; border-radius: 10px; padding: 0 16px; font-size: 18px; font-weight: bold; }
-  header { text-align: center; padding: 20px 15px 10px; }
-  header img { width: 140px; border-radius: 12px; box-shadow: 0 4px 12px rgba(26,26,140,.3); }
-  header p { letter-spacing: 3px; font-size: 13px; color: #12124a; opacity: .85; }
+  .panierbtn { background: transparent; border: 0; position: relative; padding: 0 10px; }
+  .panierbtn svg { width: 30px; height: 30px; fill: white; display: block; }
+  #nb { position: absolute; top: 2px; right: 0; background: white; color: #1a1a8c; border-radius: 50%; min-width: 18px; height: 18px; font-size: 12px; line-height: 18px; text-align: center; font-weight: bold; }
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding: 4px 15px 10px; }
+  .chips a { flex: 0 0 auto; background: rgba(255,255,255,.2); color: white; text-decoration: none; border-radius: 20px; padding: 8px 14px; font-size: 14px; font-weight: bold; white-space: nowrap; }
+  .promo { background: #e8ebff; color: #1a1a8c; text-align: center; font-size: 13px; font-weight: bold; padding: 8px 12px; }
+  header { text-align: center; padding: 12px 15px 4px; }
+  header img { width: 100px; border-radius: 12px; box-shadow: 0 4px 12px rgba(26,26,140,.3); }
+  header p { letter-spacing: 3px; font-size: 12px; opacity: .85; margin: 8px 0 0; }
   section { max-width: 600px; margin: auto; padding: 15px; }
-  h2 { text-align: center; color: #1a1a8c; }
-  .aide { text-align: center; opacity: .85; font-size: 14px; margin: 0 0 15px; }
+  .aide { text-align: center; opacity: .85; font-size: 14px; margin: 0 0 12px; }
   #vide { text-align: center; display: none; }
-  .carte { background: #ffffff; border-radius: 14px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 3px 10px rgba(26,26,140,.15); }
-  .carte img { width: 100%; display: block; }
-  .info { padding: 14px; }
-  .info h3 { margin: 0 0 6px; }
+  .bannieres { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -15px; padding: 0 15px 6px; }
+  .slide { flex: 0 0 88%; scroll-snap-align: center; display: flex; align-items: stretch; min-height: 150px; border-radius: 16px; overflow: hidden; background: linear-gradient(135deg, #1a1a8c, #3a3ad8); color: white; text-decoration: none; }
+  .st { flex: 1; padding: 16px; display: flex; flex-direction: column; justify-content: center; }
+  .st small { opacity: .8; font-size: 12px; letter-spacing: 1px; }
+  .st h3 { margin: 4px 0; font-size: 22px; }
+  .st p { margin: 0 0 8px; font-size: 18px; font-weight: bold; }
+  .st span { font-size: 14px; text-decoration: underline; }
+  .slide img { width: 42%; object-fit: cover; display: block; }
+  .rang, #accessoires { scroll-margin-top: 110px; }
+  .rang h2 { text-align: left; margin: 20px 0 8px; font-size: 20px; color: #1a1a8c; }
+  #accessoires h2 { text-align: center; color: #1a1a8c; }
+  .defil { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x proximity; margin: 0 -15px; padding: 4px 15px 12px; }
+  .mini { flex: 0 0 150px; scroll-snap-align: start; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 10px rgba(26,26,140,.15); }
+  .mini img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+  .mini h4 { font-size: 13px; margin: 8px 8px 4px; height: 34px; overflow: hidden; }
+  .mini .prix { font-size: 16px; margin: 0 8px 10px; }
   .prix { font-size: 22px; font-weight: bold; color: #1a1a8c; }
   .perso { font-size: 14px; opacity: .8; margin: 4px 0 8px; }
   .opt { width: 100%; box-sizing: border-box; padding: 11px; border-radius: 8px; border: 1px solid #c9d0ff; background: #f6f7ff; color: #12124a; margin-top: 8px; font-size: 16px; }
-  .btn { display: block; background: #25d366; color: white; text-align: center; padding: 13px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 12px; }
+  .btn { display: block; background: #2f2fc8; color: white; text-align: center; padding: 13px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 12px; }
   button.btn { width: 100%; border: 0; font-size: 16px; box-sizing: border-box; }
   .box { background: #ffffff; border-radius: 14px; padding: 14px; margin-bottom: 20px; box-shadow: 0 3px 10px rgba(26,26,140,.15); }
   .acc { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
   .acc a { background: #ffffff; border-radius: 14px; padding: 18px 8px; text-align: center; color: #12124a; text-decoration: none; font-weight: bold; box-shadow: 0 3px 10px rgba(26,26,140,.15); }
   .acc span { display: block; font-size: 42px; margin-bottom: 6px; }
-  .wa { position: fixed; bottom: 18px; right: 18px; background: #25d366; color: white; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,.4); }
-  footer { text-align: center; padding: 20px 20px 90px; font-size: 13px; opacity: .8; }
-  #overlay { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 50; display: none; align-items: flex-end; justify-content: center; }
-  .feuille { background: #ffffff; color: #12124a; width: 100%; max-width: 600px; max-height: 85vh; overflow: auto; border-radius: 18px 18px 0 0; padding: 16px; box-sizing: border-box; }
+  footer { text-align: center; padding: 20px 20px 40px; font-size: 13px; opacity: .8; }
+  .ov { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 50; display: none; align-items: flex-end; justify-content: center; }
+  .feuille { background: #ffffff; color: #12124a; width: 100%; max-width: 600px; max-height: 88vh; overflow: auto; border-radius: 18px 18px 0 0; padding: 16px; box-sizing: border-box; }
   .feuille h3 { margin: 0 0 10px; color: #1a1a8c; }
+  #f-img { width: 100%; max-height: 260px; object-fit: contain; background: #f6f7ff; border-radius: 12px; margin-bottom: 10px; }
   .ligne { display: flex; justify-content: space-between; gap: 10px; padding: 10px 0; border-bottom: 1px solid #dde1ff; }
   .qte { white-space: nowrap; }
   .qte button { width: 32px; height: 32px; border-radius: 50%; border: 0; font-size: 18px; background: #e8ebff; color: #1a1a8c; }
   .total { font-size: 20px; font-weight: bold; margin: 14px 0; color: #1a1a8c; }
   .lien { background: none; border: 0; color: #1a1a8c; opacity: .8; text-decoration: underline; font-size: 15px; margin: 10px 14px 0 0; padding: 0; }
-  .btn, button[data-add] { background: #2f2fc8; color: white; }
-    .panierbtn { background: transparent; position: relative; padding: 0 10px; }
-  .panierbtn svg { width: 30px; height: 30px; fill: white; display: block; }
-  #nb { position: absolute; top: 2px; right: 0; background: white; color: #1a1a8c; border-radius: 50%; min-width: 18px; height: 18px; font-size: 12px; line-height: 18px; text-align: center; font-weight: bold; }
 </style>
 </head>
 <body>
 
-<div class="barre">
-  <input class="recherche" id="recherche" type="search" placeholder="🔍 Rechercher (ex : nike, adidas)">
-  <button class="panierbtn" id="ouvrir" aria-label="Panier"><svg viewBox="0 0 24 24"><path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM1 2v2h2l3.6 7.6-1.4 2.4A2 2 0 0 0 7 17h12v-2H7.4l1.1-2h7.5a2 2 0 0 0 1.7-1l3.6-6.5A1 1 0 0 0 20.4 4H5.2l-.9-2H1z"/></svg><span id="nb">0</span></button>
+<div class="haut">
+  <div class="barre">
+    <input class="recherche" id="recherche" type="search" placeholder="🔍 Rechercher (ex : nike, adidas)">
+    <button class="panierbtn" id="ouvrir" aria-label="Panier"><svg viewBox="0 0 24 24"><path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM1 2v2h2l3.6 7.6-1.4 2.4A2 2 0 0 0 7 17h12v-2H7.4l1.1-2h7.5a2 2 0 0 0 1.7-1l3.6-6.5A1 1 0 0 0 20.4 4H5.2l-.9-2H1z"/></svg><span id="nb">0</span></button>
+  </div>
+  <div class="chips">
+    <a href="#maillots">Maillots</a>
+    <a href="#crampons">Crampons</a>
+    <a href="#gants">Gants</a>
+    <a href="#accessoires">Accessoires</a>
+  </div>
 </div>
+
+<div class="promo">🚚 Livraison à Gombe, Pompage, UPN, Ngaliema · Personnalisation nom + numéro</div>
 
 <header>
   <img src="Kinshasa%20Teamwear%20Logo.PNG" alt="MAILLOT A KIN">
@@ -58,19 +81,16 @@
 </header>
 
 <section>
-  <p class="aide">Tape une marque ou un club pour voir tous nos articles (nike, adidas, puma, psg...)</p>
+  <p class="aide">Tape une marque ou un club pour trouver un article (nike, adidas, puma, psg...)</p>
   <p id="vide">Aucun résultat. Écris-nous sur WhatsApp, on peut peut-être le trouver !</p>
 
-  <h2>Nos maillots</h2>
-  <div id="liste-maillots"></div>
+  <div class="bannieres" id="bannieres"></div>
 
-  <h2>Crampons</h2>
-  <div id="liste-crampons"></div>
+  <div class="rang" id="maillots"><h2>Maillots</h2><div class="defil" id="liste-maillots"></div></div>
+  <div class="rang" id="crampons"><h2>Crampons</h2><div class="defil" id="liste-crampons"></div></div>
+  <div class="rang" id="gants"><h2>Gants de gardien</h2><div class="defil" id="liste-gants"></div></div>
 
-  <h2>Gants de gardien</h2>
-  <div id="liste-gants"></div>
-
-  <div class="box">
+  <div class="box" style="margin-top:20px;">
     <h3>Livraison à Kinshasa</h3>
     <p>Gombe, Pompage, UPN, Ngaliema et autres communes.</p>
   </div>
@@ -84,23 +104,38 @@
 
   <div class="box">
     <h3>Une question ?</h3>
-    <a class="btn" href="https://wa.me/243824814041"> Discuter sur WhatsApp</a>
+    <a class="btn" href="https://wa.me/243824814041">💬 Discuter sur WhatsApp</a>
   </div>
 
-  <h2>Accessoires sportifs</h2>
-  <div class="acc">
-    <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20des%20crampons%20de%20foot"><span>👟</span>Crampons</a>
-    <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20des%20chaussettes"><span>🧦</span>Chaussettes</a>
-    <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20des%20gants%20de%20gardien"><span>🧤</span>Gants de gardien</a>
-    <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20un%20ballon%20de%20foot"><span>⚽</span>Ballons</a>
-    <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20une%20m%C3%A9daille%20d%27or"><span>🥇</span>Médaille d'or</a>
-    <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20une%20m%C3%A9daille%20d%27argent"><span>🥈</span>Médaille d'argent</a>
-    <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20une%20m%C3%A9daille%20de%20bronze"><span>🥉</span>Médaille de bronze</a>
+  <div id="accessoires">
+    <h2>Accessoires sportifs</h2>
+    <div class="acc">
+      <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20des%20crampons%20de%20foot"><span>👟</span>Crampons</a>
+      <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20des%20chaussettes"><span>🧦</span>Chaussettes</a>
+      <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20des%20gants%20de%20gardien"><span>🧤</span>Gants de gardien</a>
+      <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20un%20ballon%20de%20foot"><span>⚽</span>Ballons</a>
+      <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20une%20m%C3%A9daille%20d%27or"><span>🥇</span>Médaille d'or</a>
+      <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20une%20m%C3%A9daille%20d%27argent"><span>🥈</span>Médaille d'argent</a>
+      <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20une%20m%C3%A9daille%20de%20bronze"><span>🥉</span>Médaille de bronze</a>
+    </div>
   </div>
 </section>
 
 <footer>© MAILLOT A KIN · Kinshasa, RDC</footer>
-<div id="overlay">
+
+<div class="ov" id="fiche">
+  <div class="feuille">
+    <img id="f-img" src="" alt="">
+    <h3 id="f-nom"></h3>
+    <div class="prix" id="f-prix"></div>
+    <div class="perso" id="f-perso"></div>
+    <div id="f-opts"></div>
+    <button class="btn" id="ajouter">🛒 Ajouter au panier</button>
+    <button class="lien" id="f-fermer">Fermer</button>
+  </div>
+</div>
+
+<div class="ov" id="overlay">
   <div class="feuille">
     <h3>🛒 Mon panier</h3>
     <div id="lignes"></div>
@@ -113,7 +148,6 @@
 
 <script>
 const PRIX_MAILLOT = 20, PRIX_PERSO = 25, PRIX_CRAMPONS = 65, PRIX_GANTS = 40;
-
 
 const M = (nom, img, mots, prix) => ({cat:'maillots', nom, img, mots, prix: prix || PRIX_MAILLOT, perso: PRIX_PERSO, ph:''});
 const C = (nom, img, mots, prix) => ({cat:'crampons', nom, img, mots: mots + ' crampons chaussures', prix: prix || PRIX_CRAMPONS, perso: 0, ph:'Pointure (ex : 42)'});
@@ -143,35 +177,57 @@ const articles = [
   G('Puma, rose et bleu', '685abd68-8a4d-43b6-88a7-578fe05be573.JPG', 'puma')
 ];
 
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+// Bannière
+const TITRES = {maillots:'MAILLOTS DE CLUBS', crampons:'CRAMPONS', gants:'GANTS DE GARDIEN'};
+const DES = {maillots: PRIX_MAILLOT, crampons: PRIX_CRAMPONS, gants: PRIX_GANTS};
+let ban = '';
+['maillots', 'crampons', 'gants'].forEach(c => {
+  const a = articles.find(x => x.cat === c);
+  ban += '<a class="slide" href="#' + c + '"><div class="st"><small>NOUVEAUTÉS</small><h3>' + TITRES[c] + '</h3><p>' + (DES[c] ? 'dès ' + DES[c] + ' $' : 'Prix : nous demander') + '</p><span>Voir →</span></div><img src="' + a.img + '" alt=""></a>';
+});
+document.getElementById('bannieres').innerHTML = ban;
+
+// Rangées de produits
+articles.forEach((a, i) => {
+  const prix = a.prix ? a.prix + ' $' : 'Nous demander';
+  document.getElementById('liste-' + a.cat).innerHTML +=
+    '<div class="mini" data-voir="' + i + '" data-mots="' + a.mots + '"><img src="' + a.img + '" alt="' + esc(a.nom) + '" loading="lazy"><h4>' + a.nom + '</h4><div class="prix">' + prix + '</div></div>';
+});
+
+// Panier
 let panier = [];
 try { panier = JSON.parse(localStorage.getItem('panier')) || []; } catch (e) { panier = []; }
 function sauver() { try { localStorage.setItem('panier', JSON.stringify(panier)); } catch (e) {} }
-function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
-const vus = {};
-articles.forEach((a, i) => {
-  const vedette = vus[a.cat] ? '' : ' data-vedette="1"';
-  vus[a.cat] = true;
-  const choix = a.cat === 'maillots'
+// Fiche produit
+let courant = 0;
+function ouvrirFiche(i) {
+  courant = i;
+  const a = articles[i];
+  document.getElementById('f-img').src = a.img;
+  document.getElementById('f-nom').textContent = a.nom;
+  document.getElementById('f-prix').textContent = a.prix ? a.prix + ' $' : 'Prix : nous demander';
+  document.getElementById('f-perso').textContent = a.perso ? a.perso + ' $ avec personnalisation (nom + numéro)' : '';
+  document.getElementById('f-opts').innerHTML = a.cat === 'maillots'
     ? '<select class="opt taille"><option>S</option><option>M</option><option>L</option><option>XL</option></select><input class="opt nomnum" placeholder="Nom + numéro (+' + (a.perso - a.prix) + ' $, optionnel)">'
     : '<input class="opt taille" placeholder="' + a.ph + '">';
-  const perso = a.perso ? '<div class="perso">' + a.perso + ' $ avec personnalisation (nom + numéro)</div>' : '';
-  const prix = a.prix ? a.prix + ' $' : 'Prix : nous demander';
-  document.getElementById('liste-' + a.cat).innerHTML +=
-    '<div class="carte"' + vedette + ' data-mots="' + a.mots + '"><img src="' + a.img + '" alt="' + esc(a.nom) + '"><div class="info"><h3>' + a.nom + '</h3><div class="prix">' + prix + '</div>' + perso + choix + '<button class="btn" data-add="' + i + '">🛒 Ajouter au panier</button></div></div>';
-});
-
-function ajouter(i, carte, bouton) {
-  const a = articles[i];
-  const taille = carte.querySelector('.taille').value.trim();
-  const nn = carte.querySelector('.nomnum');
+  document.getElementById('fiche').style.display = 'flex';
+}
+function ajouter() {
+  const a = articles[courant];
+  const f = document.getElementById('fiche');
+  const taille = f.querySelector('.taille').value.trim();
+  const nn = f.querySelector('.nomnum');
   const perso = nn ? nn.value.trim() : '';
   const prix = (perso && a.perso) ? a.perso : a.prix;
   const ex = panier.find(p => p.nom === a.nom && p.taille === taille && p.perso === perso);
   if (ex) { ex.qte++; } else { panier.push({nom: a.nom, taille: taille, perso: perso, prix: prix, qte: 1}); }
   sauver(); majPanier();
-  bouton.textContent = '✅ Ajouté';
-  setTimeout(() => { bouton.textContent = '🛒 Ajouter au panier'; }, 1200);
+  const b = document.getElementById('ajouter');
+  b.textContent = '✅ Ajouté';
+  setTimeout(() => { b.textContent = '🛒 Ajouter au panier'; f.style.display = 'none'; }, 700);
 }
 
 function majPanier() {
@@ -202,32 +258,42 @@ function commander() {
 
 document.addEventListener('click', e => {
   const t = e.target;
-  if (t.dataset.add !== undefined) { ajouter(+t.dataset.add, t.closest('.carte'), t); }
-  else if (t.dataset.plus !== undefined) { panier[+t.dataset.plus].qte++; sauver(); majPanier(); }
+  const v = t.closest('[data-voir]');
+  if (v) { ouvrirFiche(+v.dataset.voir); return; }
+  if (t.dataset.plus !== undefined) { panier[+t.dataset.plus].qte++; sauver(); majPanier(); }
   else if (t.dataset.moins !== undefined) {
     const k = +t.dataset.moins;
     panier[k].qte--;
     if (panier[k].qte <= 0) { panier.splice(k, 1); }
     sauver(); majPanier();
   }
+  else if (t.classList.contains('ov')) { t.style.display = 'none'; }
 });
 document.getElementById('ouvrir').addEventListener('click', () => { document.getElementById('overlay').style.display = 'flex'; });
 document.getElementById('fermer').addEventListener('click', () => { document.getElementById('overlay').style.display = 'none'; });
+document.getElementById('f-fermer').addEventListener('click', () => { document.getElementById('fiche').style.display = 'none'; });
 document.getElementById('vider').addEventListener('click', () => { panier = []; sauver(); majPanier(); });
 document.getElementById('commander').addEventListener('click', commander);
+document.getElementById('ajouter').addEventListener('click', ajouter);
 majPanier();
 
+// Recherche
 const champ = document.getElementById('recherche');
 function filtrer() {
   const q = champ.value.toLowerCase().trim();
   let trouve = 0;
-  document.querySelectorAll('.carte, .acc a').forEach(el => {
-    const h3 = el.querySelector('h3');
-    const texte = (el.dataset.mots || '') + ' ' + (h3 ? h3.textContent : el.textContent);
-    const ok = q === '' ? (el.matches('.acc a') || el.dataset.vedette === '1') : texte.toLowerCase().includes(q);
+  document.querySelectorAll('.mini, .acc a').forEach(el => {
+    const h = el.querySelector('h4');
+    const texte = (el.dataset.mots || '') + ' ' + (h ? h.textContent : el.textContent);
+    const ok = q === '' || texte.toLowerCase().includes(q);
     el.style.display = ok ? '' : 'none';
     if (ok) { trouve++; }
   });
+  document.querySelectorAll('.rang').forEach(r => {
+    const vis = Array.from(r.querySelectorAll('.mini')).some(m => m.style.display !== 'none');
+    r.style.display = vis ? '' : 'none';
+  });
+  document.getElementById('bannieres').style.display = q === '' ? '' : 'none';
   document.getElementById('vide').style.display = (q !== '' && !trouve) ? 'block' : 'none';
 }
 champ.addEventListener('input', filtrer);
