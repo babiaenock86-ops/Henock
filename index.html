@@ -40,13 +40,16 @@
   .total { font-size: 20px; font-weight: bold; margin: 14px 0; color: #1a1a8c; }
   .lien { background: none; border: 0; color: #1a1a8c; opacity: .8; text-decoration: underline; font-size: 15px; margin: 10px 14px 0 0; padding: 0; }
   .btn, button[data-add] { background: #2f2fc8; color: white; }
+    .panierbtn { background: transparent; position: relative; padding: 0 10px; }
+  .panierbtn svg { width: 30px; height: 30px; fill: white; display: block; }
+  #nb { position: absolute; top: 2px; right: 0; background: white; color: #1a1a8c; border-radius: 50%; min-width: 18px; height: 18px; font-size: 12px; line-height: 18px; text-align: center; font-weight: bold; }
 </style>
 </head>
 <body>
 
 <div class="barre">
   <input class="recherche" id="recherche" type="search" placeholder="🔍 Rechercher (ex : nike, adidas)">
-  <button class="panierbtn" id="ouvrir">🛒 <span id="nb">0</span></button>
+  <button class="panierbtn" id="ouvrir" aria-label="Panier"><svg viewBox="0 0 24 24"><path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM1 2v2h2l3.6 7.6-1.4 2.4A2 2 0 0 0 7 17h12v-2H7.4l1.1-2h7.5a2 2 0 0 0 1.7-1l3.6-6.5A1 1 0 0 0 20.4 4H5.2l-.9-2H1z"/></svg><span id="nb">0</span></button>
 </div>
 
 <header>
