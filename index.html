@@ -5,75 +5,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MAILLOT A KIN</title>
 <style>
-  body { margin: 0; font-family: Arial, sans-serif; color: white; background: linear-gradient(135deg, #000 0%, #1a1a8c 50%, #3030d0 100%); background-attachment: fixed; }
-  header { text-align: center; padding: 30px 15px 10px; }
-  header img { width: 140px; border-radius: 12px; }
-  header p { letter-spacing: 3px; font-size: 13px; opacity: .8; }
+  body { margin: 0; font-family: Arial, sans-serif; color: #12124a; background: linear-gradient(180deg, #ffffff 0%, #e8ebff 45%, #c9d0ff 100%); background-attachment: fixed; }
+  .barre { position: sticky; top: 0; z-index: 20; display: flex; gap: 10px; padding: 10px 15px; background: #1a1a8c; }
+  .recherche { flex: 1; min-width: 0; box-sizing: border-box; padding: 12px; border-radius: 10px; border: none; font-size: 16px; }
+  .panierbtn { background: #ff7a00; color: white; border: 0; border-radius: 10px; padding: 0 16px; font-size: 18px; font-weight: bold; }
+  header { text-align: center; padding: 20px 15px 10px; }
+  header img { width: 140px; border-radius: 12px; box-shadow: 0 4px 12px rgba(26,26,140,.3); }
+  header p { letter-spacing: 3px; font-size: 13px; color: #12124a; opacity: .85; }
   section { max-width: 600px; margin: auto; padding: 15px; }
-  h2 { text-align: center; }
-  .carte { background: rgba(255,255,255,.1); border-radius: 14px; overflow: hidden; margin-bottom: 20px; }
+  h2 { text-align: center; color: #1a1a8c; }
+  .aide { text-align: center; opacity: .85; font-size: 14px; margin: 0 0 15px; }
+  #vide { text-align: center; display: none; }
+  .carte { background: #ffffff; border-radius: 14px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 3px 10px rgba(26,26,140,.15); }
   .carte img { width: 100%; display: block; }
   .info { padding: 14px; }
   .info h3 { margin: 0 0 6px; }
-  .prix { font-size: 22px; font-weight: bold; }
-  .perso { font-size: 14px; opacity: .85; margin: 4px 0 8px; }
+  .prix { font-size: 22px; font-weight: bold; color: #1a1a8c; }
+  .perso { font-size: 14px; opacity: .8; margin: 4px 0 8px; }
+  .opt { width: 100%; box-sizing: border-box; padding: 11px; border-radius: 8px; border: 1px solid #c9d0ff; background: #f6f7ff; color: #12124a; margin-top: 8px; font-size: 16px; }
   .btn { display: block; background: #25d366; color: white; text-align: center; padding: 13px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 12px; }
-  .box { background: rgba(255,255,255,.1); border-radius: 14px; padding: 14px; margin-bottom: 20px; }
+  button.btn { width: 100%; border: 0; font-size: 16px; box-sizing: border-box; }
+  .box { background: #ffffff; border-radius: 14px; padding: 14px; margin-bottom: 20px; box-shadow: 0 3px 10px rgba(26,26,140,.15); }
   .acc { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
-  .acc a { background: rgba(255,255,255,.1); border-radius: 14px; padding: 18px 8px; text-align: center; color: white; text-decoration: none; font-weight: bold; }
+  .acc a { background: #ffffff; border-radius: 14px; padding: 18px 8px; text-align: center; color: #12124a; text-decoration: none; font-weight: bold; box-shadow: 0 3px 10px rgba(26,26,140,.15); }
   .acc span { display: block; font-size: 42px; margin-bottom: 6px; }
   .wa { position: fixed; bottom: 18px; right: 18px; background: #25d366; color: white; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,.4); }
-  footer { text-align: center; padding: 20px 20px 90px; font-size: 13px; opacity: .7; }
-  .recherche { width: 100%; box-sizing: border-box; padding: 14px; border-radius: 10px; border: none; font-size: 16px; margin-bottom: 10px; }
-  .aide { text-align: center; opacity: .8; font-size: 14px; margin: 0 0 15px; }
-  #vide { text-align: center; display: none; }
+  footer { text-align: center; padding: 20px 20px 90px; font-size: 13px; opacity: .8; }
+  #overlay { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 50; display: none; align-items: flex-end; justify-content: center; }
+  .feuille { background: #ffffff; color: #12124a; width: 100%; max-width: 600px; max-height: 85vh; overflow: auto; border-radius: 18px 18px 0 0; padding: 16px; box-sizing: border-box; }
+  .feuille h3 { margin: 0 0 10px; color: #1a1a8c; }
+  .ligne { display: flex; justify-content: space-between; gap: 10px; padding: 10px 0; border-bottom: 1px solid #dde1ff; }
+  .qte { white-space: nowrap; }
+  .qte button { width: 32px; height: 32px; border-radius: 50%; border: 0; font-size: 18px; background: #e8ebff; color: #1a1a8c; }
+  .total { font-size: 20px; font-weight: bold; margin: 14px 0; color: #1a1a8c; }
+  .lien { background: none; border: 0; color: #1a1a8c; opacity: .8; text-decoration: underline; font-size: 15px; margin: 10px 14px 0 0; padding: 0; }
 </style>
 </head>
 <body>
+
+<div class="barre">
+  <input class="recherche" id="recherche" type="search" placeholder="🔍 Rechercher (ex : nike, adidas)">
+  <button class="panierbtn" id="ouvrir">🛒 <span id="nb">0</span></button>
+</div>
+
 <header>
   <img src="Kinshasa%20Teamwear%20Logo.PNG" alt="MAILLOT A KIN">
   <p>MAILLOTS & SPORTSWEAR · KINSHASA</p>
 </header>
+
 <section>
-  <input class="recherche" id="recherche" type="search" placeholder="🔍 Rechercher (ex : nike, adidas, crampons)">
   <p class="aide">Tape une marque ou un club pour voir tous nos articles (nike, adidas, puma, psg...)</p>
   <p id="vide">Aucun résultat. Écris-nous sur WhatsApp, on peut peut-être le trouver !</p>
 
   <h2>Nos maillots</h2>
-
-  <div class="carte" data-vedette="1" data-mots="nike barca barcelone">
-    <img src="07405881-2946-435f-a05e-c10e0ca87309.JPG" alt="Maillot FC Barcelone">
-    <div class="info">
-      <h3>FC Barcelone, édition noir et violet</h3>
-      <div class="prix">20 $</div>
-      <div class="perso">25 $ avec personnalisation (nom + numéro)</div>
-      <p>Tailles : S, M, L, XL</p>
-      <a class="btn" href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20commander%20le%20maillot%20FC%20Barcelone%20noir%20et%20violet">Commander sur WhatsApp</a>
-    </div>
-  </div>
-
-  <div class="carte" data-mots="adidas real madrid">
-    <img src="ff87788c-62cd-4f66-bd3d-046ad0ee55e3.JPG" alt="Maillot Real Madrid">
-    <div class="info">
-      <h3>Real Madrid, third vert</h3>
-      <div class="prix">20 $</div>
-      <div class="perso">25 $ avec personnalisation (nom + numéro)</div>
-      <p>Tailles : S, M, L, XL</p>
-      <a class="btn" href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20commander%20le%20maillot%20Real%20Madrid%20vert">Commander sur WhatsApp</a>
-    </div>
-  </div>
-
-  <div class="carte" data-mots="puma manchester city">
-    <img src="cde8250d-b5b9-43a5-bb2e-5a59765e94e1.JPG" alt="Maillot Manchester City">
-    <div class="info">
-      <h3>Manchester City, noir et or</h3>
-      <div class="prix">20 $</div>
-      <div class="perso">25 $ avec personnalisation (nom + numéro)</div>
-      <p>Tailles : S, M, L, XL</p>
-      <a class="btn" href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20commander%20le%20maillot%20Manchester%20City%20noir%20et%20or">Commander sur WhatsApp</a>
-    </div>
-  </div>
-
   <div id="liste-maillots"></div>
 
   <h2>Crampons</h2>
@@ -110,50 +94,136 @@
     <a href="https://wa.me/243824814041?text=Bonjour%2C%20je%20veux%20une%20m%C3%A9daille%20de%20bronze"><span>🥉</span>Médaille de bronze</a>
   </div>
 </section>
+
 <footer>© MAILLOT A KIN · Kinshasa, RDC</footer>
 <a class="wa" href="https://wa.me/243824814041" aria-label="WhatsApp">💬</a>
 
+<div id="overlay">
+  <div class="feuille">
+    <h3>🛒 Mon panier</h3>
+    <div id="lignes"></div>
+    <div class="total" id="total"></div>
+    <button class="btn" id="commander">Commander sur WhatsApp</button>
+    <button class="lien" id="vider">Vider le panier</button>
+    <button class="lien" id="fermer">Continuer mes achats</button>
+  </div>
+</div>
+
 <script>
+const PRIX_MAILLOT = 20, PRIX_PERSO = 25, PRIX_CRAMPONS = null, PRIX_GANTS = null;
+
+const M = (nom, img, mots, prix) => ({cat:'maillots', nom, img, mots, prix: prix || PRIX_MAILLOT, perso: PRIX_PERSO, ph:''});
+const C = (nom, img, mots, prix) => ({cat:'crampons', nom, img, mots: mots + ' crampons chaussures', prix: prix || PRIX_CRAMPONS, perso: 0, ph:'Pointure (ex : 42)'});
+const G = (nom, img, mots, prix) => ({cat:'gants', nom, img, mots: mots + ' gants gardien', prix: prix || PRIX_GANTS, perso: 0, ph:'Taille (ex : 9)'});
+
 const articles = [
- {cat:'maillots', nom:'PSG, extérieur blanc', img:'1ae86674-5456-4d04-96c8-dcbc060b2389.JPG', prix:'20 $', perso:'25 $ avec personnalisation (nom + numéro)', info:'Tailles : S, M, L, XL', mots:'nike psg paris'},
- {cat:'maillots', nom:'Aston Villa, bordeaux', img:'16917675-76cb-45f6-869d-85ebc5b59c14.JPG', prix:'20 $', perso:'25 $ avec personnalisation (nom + numéro)', info:'Tailles : S, M, L, XL', mots:'adidas aston villa'},
- {cat:'maillots', nom:'Tottenham, domicile blanc', img:'b05e7a1e-63ac-4721-9abc-262098045efc.JPG', prix:'20 $', perso:'25 $ avec personnalisation (nom + numéro)', info:'Tailles : S, M, L, XL', mots:'nike tottenham spurs'},
- {cat:'maillots', nom:'Juventus, noir et or', img:'449b4459-d5f9-4188-922b-68559e5ff58e.JPG', prix:'20 $', perso:'25 $ avec personnalisation (nom + numéro)', info:'Tailles : S, M, L, XL', mots:'adidas juventus juve'},
- {cat:'maillots', nom:'Bayern Munich, violet et rouge', img:'125a189e-3495-4102-8b9c-f4ea48b53205.JPG', prix:'20 $', perso:'25 $ avec personnalisation (nom + numéro)', info:'Tailles : S, M, L, XL', mots:'adidas bayern munich'},
+  M('FC Barcelone, noir et violet', '07405881-2946-435f-a05e-c10e0ca87309.JPG', 'nike barca barcelone'),
+  M('Real Madrid, third vert', 'ff87788c-62cd-4f66-bd3d-046ad0ee55e3.JPG', 'adidas real madrid'),
+  M('Manchester City, noir et or', 'cde8250d-b5b9-43a5-bb2e-5a59765e94e1.JPG', 'puma manchester city'),
+  M('PSG, extérieur blanc', '1ae86674-5456-4d04-96c8-dcbc060b2389.JPG', 'nike psg paris'),
+  M('Aston Villa, bordeaux', '16917675-76cb-45f6-869d-85ebc5b59c14.JPG', 'adidas aston villa'),
+  M('Tottenham, domicile blanc', 'b05e7a1e-63ac-4721-9abc-262098045efc.JPG', 'nike tottenham spurs'),
+  M('Juventus, noir et or', '449b4459-d5f9-4188-922b-68559e5ff58e.JPG', 'adidas juventus juve'),
+  M('Bayern Munich, violet et rouge', '125a189e-3495-4102-8b9c-f4ea48b53205.JPG', 'adidas bayern munich'),
 
- {cat:'crampons', nom:'Nike Air Zoom, bleu et rose', img:'7aaff630-c239-432c-a1bd-2ad28a2cb444.JPG', prix:'XX $', info:'Pointures : nous demander', mots:'nike crampons chaussures'},
- {cat:'crampons', nom:'Nike Air Zoom, rose et orange', img:'b266a7cb-26b9-486f-9b8b-25c889e8fdba.JPG', prix:'XX $', info:'Pointures : nous demander', mots:'nike crampons chaussures'},
- {cat:'crampons', nom:'Nike Vapor, rose et blanc', img:'ee5d6d6a-eb42-48de-a84b-402e6dcabadb.JPG', prix:'XX $', info:'Pointures : nous demander', mots:'nike crampons chaussures'},
- {cat:'crampons', nom:'Nike Air Zoom, noir et rose', img:'1c90db5c-9ebc-45f0-b98c-35855bd63d21.JPG', prix:'XX $', info:'Pointures : nous demander', mots:'nike crampons chaussures'},
- {cat:'crampons', nom:'Nike Vapor, rouge et or', img:'70e65ccd-ed21-42b4-9a46-06465b12f9f5.JPG', prix:'XX $', info:'Pointures : nous demander', mots:'nike crampons chaussures'},
- {cat:'crampons', nom:'adidas Y-3, dragon et tigre', img:'5bbc3053-d6da-4e77-9f07-25e413aa0607.JPG', prix:'XX $', info:'Pointures : nous demander', mots:'adidas crampons chaussures y3'},
- {cat:'crampons', nom:'adidas, noir et multicolore', img:'145fc687-c764-4e55-abd8-5464a9a7d6de.JPG', prix:'XX $', info:'Pointures : nous demander', mots:'adidas crampons chaussures'},
+  C('Nike Air Zoom, bleu et rose', '7aaff630-c239-432c-a1bd-2ad28a2cb444.JPG', 'nike'),
+  C('Nike Air Zoom, rose et orange', 'b266a7cb-26b9-486f-9b8b-25c889e8fdba.JPG', 'nike'),
+  C('Nike Vapor, rose et blanc', 'ee5d6d6a-eb42-48de-a84b-402e6dcabadb.JPG', 'nike'),
+  C('Nike Air Zoom, noir et rose', '1c90db5c-9ebc-45f0-b98c-35855bd63d21.JPG', 'nike'),
+  C('Nike Vapor, rouge et or', '70e65ccd-ed21-42b4-9a46-06465b12f9f5.JPG', 'nike'),
+  C('adidas Y-3, dragon et tigre', '5bbc3053-d6da-4e77-9f07-25e413aa0607.JPG', 'adidas y3'),
+  C('adidas, noir et multicolore', '145fc687-c764-4e55-abd8-5464a9a7d6de.JPG', 'adidas'),
 
- {cat:'gants', nom:'adidas Predator, gris et rouge', img:'854776b3-56ef-4c09-9507-dbdd18169a3f.JPG', prix:'XX $', info:'Tailles : nous demander', mots:'adidas gants gardien predator'},
- {cat:'gants', nom:'adidas, vert et rose', img:'70dd41ac-845b-4b91-b0d7-39f7498fde4e.JPG', prix:'XX $', info:'Tailles : nous demander', mots:'adidas gants gardien'},
- {cat:'gants', nom:'adidas Predator, bleu et rose', img:'470afc52-ed9a-43dd-aa3c-75e290baf0bf.JPG', prix:'XX $', info:'Tailles : nous demander', mots:'adidas gants gardien predator'},
- {cat:'gants', nom:'Puma, rose et bleu', img:'685abd68-8a4d-43b6-88a7-578fe05be573.JPG', prix:'XX $', info:'Tailles : nous demander', mots:'puma gants gardien'}
+  G('adidas Predator, gris et rouge', '854776b3-56ef-4c09-9507-dbdd18169a3f.JPG', 'adidas predator'),
+  G('adidas, vert et rose', '70dd41ac-845b-4b91-b0d7-39f7498fde4e.JPG', 'adidas'),
+  G('adidas Predator, bleu et rose', '470afc52-ed9a-43dd-aa3c-75e290baf0bf.JPG', 'adidas predator'),
+  G('Puma, rose et bleu', '685abd68-8a4d-43b6-88a7-578fe05be573.JPG', 'puma')
 ];
 
+let panier = [];
+try { panier = JSON.parse(localStorage.getItem('panier')) || []; } catch (e) { panier = []; }
+function sauver() { try { localStorage.setItem('panier', JSON.stringify(panier)); } catch (e) {} }
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
 const vus = {};
-articles.forEach(a => {
-  const vedette = (a.cat !== 'maillots' && !vus[a.cat]) ? ' data-vedette="1"' : '';
+articles.forEach((a, i) => {
+  const vedette = vus[a.cat] ? '' : ' data-vedette="1"';
   vus[a.cat] = true;
-  const msg = encodeURIComponent('Bonjour, je veux commander : ' + a.nom);
-  const perso = a.perso ? '<div class="perso">' + a.perso + '</div>' : '';
+  const choix = a.cat === 'maillots'
+    ? '<select class="opt taille"><option>S</option><option>M</option><option>L</option><option>XL</option></select><input class="opt nomnum" placeholder="Nom + numéro (+' + (a.perso - a.prix) + ' $, optionnel)">'
+    : '<input class="opt taille" placeholder="' + a.ph + '">';
+  const perso = a.perso ? '<div class="perso">' + a.perso + ' $ avec personnalisation (nom + numéro)</div>' : '';
+  const prix = a.prix ? a.prix + ' $' : 'Prix : nous demander';
   document.getElementById('liste-' + a.cat).innerHTML +=
-    '<div class="carte"' + vedette + ' data-mots="' + a.mots + '"><img src="' + a.img + '" alt="' + a.nom + '"><div class="info"><h3>' + a.nom + '</h3><div class="prix">' + a.prix + '</div>' + perso + '<p>' + a.info + '</p><a class="btn" href="https://wa.me/243824814041?text=' + msg + '">Commander sur WhatsApp</a></div></div>';
+    '<div class="carte"' + vedette + ' data-mots="' + a.mots + '"><img src="' + a.img + '" alt="' + esc(a.nom) + '"><div class="info"><h3>' + a.nom + '</h3><div class="prix">' + prix + '</div>' + perso + choix + '<button class="btn" data-add="' + i + '">🛒 Ajouter au panier</button></div></div>';
 });
+
+function ajouter(i, carte, bouton) {
+  const a = articles[i];
+  const taille = carte.querySelector('.taille').value.trim();
+  const nn = carte.querySelector('.nomnum');
+  const perso = nn ? nn.value.trim() : '';
+  const prix = (perso && a.perso) ? a.perso : a.prix;
+  const ex = panier.find(p => p.nom === a.nom && p.taille === taille && p.perso === perso);
+  if (ex) { ex.qte++; } else { panier.push({nom: a.nom, taille: taille, perso: perso, prix: prix, qte: 1}); }
+  sauver(); majPanier();
+  bouton.textContent = '✅ Ajouté';
+  setTimeout(() => { bouton.textContent = '🛒 Ajouter au panier'; }, 1200);
+}
+
+function majPanier() {
+  const nb = panier.reduce((s, p) => s + p.qte, 0);
+  document.getElementById('nb').textContent = nb;
+  const liste = document.getElementById('lignes');
+  const totalEl = document.getElementById('total');
+  if (!panier.length) { liste.innerHTML = '<p>Votre panier est vide.</p>'; totalEl.textContent = ''; return; }
+  liste.innerHTML = panier.map((p, k) =>
+    '<div class="ligne"><div><b>' + esc(p.nom) + '</b><br><small>' + (p.taille ? 'Taille : ' + esc(p.taille) : '') + (p.perso ? ' · ' + esc(p.perso) : '') + '</small><br>' + (p.prix ? p.prix + ' $' : 'prix à confirmer') + '</div><div class="qte"><button data-moins="' + k + '">−</button> ' + p.qte + ' <button data-plus="' + k + '">+</button></div></div>'
+  ).join('');
+  let total = 0, inconnu = false;
+  panier.forEach(p => { if (p.prix) { total += p.prix * p.qte; } else { inconnu = true; } });
+  totalEl.textContent = 'Total : ' + total + ' $' + (inconnu ? ' + articles à confirmer' : '');
+}
+
+function commander() {
+  if (!panier.length) return;
+  let t = 'Bonjour, je veux commander :\n';
+  let total = 0, inconnu = false;
+  panier.forEach((p, k) => {
+    t += (k + 1) + '. ' + p.nom + (p.taille ? ' (taille ' + p.taille + ')' : '') + (p.perso ? ' [perso : ' + p.perso + ']' : '') + ' x' + p.qte + (p.prix ? ' = ' + (p.prix * p.qte) + ' $' : ' (prix à confirmer)') + '\n';
+    if (p.prix) { total += p.prix * p.qte; } else { inconnu = true; }
+  });
+  t += 'Total : ' + total + ' $' + (inconnu ? ' + à confirmer' : '') + '\nCommune de livraison : ';
+  window.location.href = 'https://wa.me/243824814041?text=' + encodeURIComponent(t);
+}
+
+document.addEventListener('click', e => {
+  const t = e.target;
+  if (t.dataset.add !== undefined) { ajouter(+t.dataset.add, t.closest('.carte'), t); }
+  else if (t.dataset.plus !== undefined) { panier[+t.dataset.plus].qte++; sauver(); majPanier(); }
+  else if (t.dataset.moins !== undefined) {
+    const k = +t.dataset.moins;
+    panier[k].qte--;
+    if (panier[k].qte <= 0) { panier.splice(k, 1); }
+    sauver(); majPanier();
+  }
+});
+document.getElementById('ouvrir').addEventListener('click', () => { document.getElementById('overlay').style.display = 'flex'; });
+document.getElementById('fermer').addEventListener('click', () => { document.getElementById('overlay').style.display = 'none'; });
+document.getElementById('vider').addEventListener('click', () => { panier = []; sauver(); majPanier(); });
+document.getElementById('commander').addEventListener('click', commander);
+majPanier();
 
 const champ = document.getElementById('recherche');
 function filtrer() {
   const q = champ.value.toLowerCase().trim();
   let trouve = 0;
   document.querySelectorAll('.carte, .acc a').forEach(el => {
-    const texte = (el.textContent + ' ' + (el.dataset.mots || '')).toLowerCase();
-    const ok = q === '' ? (el.matches('.acc a') || el.dataset.vedette === '1') : texte.includes(q);
+    const h3 = el.querySelector('h3');
+    const texte = (el.dataset.mots || '') + ' ' + (h3 ? h3.textContent : el.textContent);
+    const ok = q === '' ? (el.matches('.acc a') || el.dataset.vedette === '1') : texte.toLowerCase().includes(q);
     el.style.display = ok ? '' : 'none';
-    if (ok) trouve++;
+    if (ok) { trouve++; }
   });
   document.getElementById('vide').style.display = (q !== '' && !trouve) ? 'block' : 'none';
 }
