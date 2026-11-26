@@ -112,7 +112,8 @@
 </div>
 
 <script>
-const PRIX_MAILLOT = 20, PRIX_PERSO = 25, PRIX_CRAMPONS = null, PRIX_GANTS = null;
+const PRIX_MAILLOT = 20, PRIX_PERSO = 25, PRIX_CRAMPONS = 65, PRIX_GANTS = 40;
+
 
 const M = (nom, img, mots, prix) => ({cat:'maillots', nom, img, mots, prix: prix || PRIX_MAILLOT, perso: PRIX_PERSO, ph:''});
 const C = (nom, img, mots, prix) => ({cat:'crampons', nom, img, mots: mots + ' crampons chaussures', prix: prix || PRIX_CRAMPONS, perso: 0, ph:'Pointure (ex : 42)'});
