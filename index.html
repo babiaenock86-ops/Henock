@@ -13,8 +13,8 @@
   .panierbtn svg { width: 30px; height: 30px; fill: white; display: block; }
   #nb { position: absolute; top: 2px; right: 0; background: white; color: #1a1a8c; border-radius: 50%; min-width: 18px; height: 18px; font-size: 12px; line-height: 18px; text-align: center; font-weight: bold; }
   .chips { display: flex; gap: 8px; overflow-x: auto; padding: 4px 15px 10px; }
-  .chips a { flex: 0 0 auto; background: rgba(255,255,255,.2); color: white; text-decoration: none; border-radius: 20px; padding: 8px 14px; font-size: 14px; font-weight: bold; white-space: nowrap; }
-  .promo { background: #e8ebff; color: #1a1a8c; text-align: center; font-size: 13px; font-weight: bold; padding: 8px 12px; }
+  .chips a { flex: 0 0 auto; background: rgba(255,255,255,.2); color: white; text-decoration: none; border-radius: 20px; padding: 8px 14px; font-size: 14px; font-weight: bold; white-space: nowrap; transition: transform .15s; }
+  .chips a:active { transform: scale(.93); }
   header { text-align: center; padding: 12px 15px 4px; }
   header img { width: 100px; border-radius: 12px; box-shadow: 0 4px 12px rgba(26,26,140,.3); }
   header p { letter-spacing: 3px; font-size: 12px; opacity: .85; margin: 8px 0 0; }
@@ -22,7 +22,8 @@
   .aide { text-align: center; opacity: .85; font-size: 14px; margin: 0 0 12px; }
   #vide { text-align: center; display: none; }
   .bannieres { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -15px; padding: 0 15px 6px; }
-  .slide { flex: 0 0 88%; scroll-snap-align: center; display: flex; align-items: stretch; min-height: 150px; border-radius: 16px; overflow: hidden; background: linear-gradient(135deg, #1a1a8c, #3a3ad8); color: white; text-decoration: none; }
+  .slide { flex: 0 0 88%; scroll-snap-align: center; display: flex; align-items: stretch; min-height: 150px; border-radius: 16px; overflow: hidden; background: linear-gradient(135deg, #1a1a8c, #3a3ad8); color: white; text-decoration: none; transition: transform .15s; }
+  .slide:active { transform: scale(.97); }
   .st { flex: 1; padding: 16px; display: flex; flex-direction: column; justify-content: center; }
   .st small { opacity: .8; font-size: 12px; letter-spacing: 1px; }
   .st h3 { margin: 4px 0; font-size: 22px; }
@@ -33,28 +34,36 @@
   .rang h2 { text-align: left; margin: 20px 0 8px; font-size: 20px; color: #1a1a8c; }
   #accessoires h2 { text-align: center; color: #1a1a8c; }
   .defil { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x proximity; margin: 0 -15px; padding: 4px 15px 12px; }
-  .mini { flex: 0 0 150px; scroll-snap-align: start; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 10px rgba(26,26,140,.15); }
+  .mini { flex: 0 0 150px; scroll-snap-align: start; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 10px rgba(26,26,140,.15); transition: transform .15s; }
+  .mini:active { transform: scale(.94); }
   .mini img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
   .mini h4 { font-size: 13px; margin: 8px 8px 4px; height: 34px; overflow: hidden; }
   .mini .prix { font-size: 16px; margin: 0 8px 10px; }
   .prix { font-size: 22px; font-weight: bold; color: #1a1a8c; }
   .perso { font-size: 14px; opacity: .8; margin: 4px 0 8px; }
   .opt { width: 100%; box-sizing: border-box; padding: 11px; border-radius: 8px; border: 1px solid #c9d0ff; background: #f6f7ff; color: #12124a; margin-top: 8px; font-size: 16px; }
+  .err { display: none; color: #d00000; font-size: 14px; margin-top: 8px; font-weight: bold; }
   .btn { display: block; background: #2f2fc8; color: white; text-align: center; padding: 13px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 12px; }
   button.btn { width: 100%; border: 0; font-size: 16px; box-sizing: border-box; }
   .box { background: #ffffff; border-radius: 14px; padding: 14px; margin-bottom: 20px; box-shadow: 0 3px 10px rgba(26,26,140,.15); }
   .acc { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
-  .acc a { background: #ffffff; border-radius: 14px; padding: 18px 8px; text-align: center; color: #12124a; text-decoration: none; font-weight: bold; box-shadow: 0 3px 10px rgba(26,26,140,.15); }
+  .acc a { background: #ffffff; border-radius: 14px; padding: 18px 8px; text-align: center; color: #12124a; text-decoration: none; font-weight: bold; box-shadow: 0 3px 10px rgba(26,26,140,.15); transition: transform .15s; }
+  .acc a:active { transform: scale(.95); }
   .acc span { display: block; font-size: 42px; margin-bottom: 6px; }
   footer { text-align: center; padding: 20px 20px 40px; font-size: 13px; opacity: .8; }
-  .ov { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 50; display: none; align-items: flex-end; justify-content: center; }
-  .feuille { background: #ffffff; color: #12124a; width: 100%; max-width: 600px; max-height: 88vh; overflow: auto; border-radius: 18px 18px 0 0; padding: 16px; box-sizing: border-box; }
+  @keyframes monte { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  @keyframes apparait { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.6); } 100% { transform: scale(1); } }
+  .pop { animation: pop .4s ease; }
+  .ov { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 50; display: none; align-items: flex-end; justify-content: center; animation: apparait .25s ease; }
+  .feuille { background: #ffffff; color: #12124a; width: 100%; max-width: 600px; max-height: 88vh; overflow: auto; border-radius: 18px 18px 0 0; padding: 16px; box-sizing: border-box; animation: monte .32s ease-out; }
   .feuille h3 { margin: 0 0 10px; color: #1a1a8c; }
   #f-img { width: 100%; max-height: 260px; object-fit: contain; background: #f6f7ff; border-radius: 12px; margin-bottom: 10px; }
   .ligne { display: flex; justify-content: space-between; gap: 10px; padding: 10px 0; border-bottom: 1px solid #dde1ff; }
   .qte { white-space: nowrap; }
   .qte button { width: 32px; height: 32px; border-radius: 50%; border: 0; font-size: 18px; background: #e8ebff; color: #1a1a8c; }
   .total { font-size: 20px; font-weight: bold; margin: 14px 0; color: #1a1a8c; }
+  #cartcom { margin-top: 10px; font-weight: bold; }
   .lien { background: none; border: 0; color: #1a1a8c; opacity: .8; text-decoration: underline; font-size: 15px; margin: 10px 14px 0 0; padding: 0; }
 </style>
 </head>
@@ -72,8 +81,6 @@
     <a href="#accessoires">Accessoires</a>
   </div>
 </div>
-
-<div class="promo">🚚 Livraison à Gombe, Pompage, UPN, Ngaliema · Personnalisation nom + numéro</div>
 
 <header>
   <img src="Kinshasa%20Teamwear%20Logo.PNG" alt="MAILLOT A KIN">
@@ -130,6 +137,7 @@
     <div class="prix" id="f-prix"></div>
     <div class="perso" id="f-perso"></div>
     <div id="f-opts"></div>
+    <div class="err" id="f-err">📍 Choisis ta commune de livraison</div>
     <button class="btn" id="ajouter">🛒 Ajouter au panier</button>
     <button class="lien" id="f-fermer">Fermer</button>
   </div>
@@ -139,6 +147,7 @@
   <div class="feuille">
     <h3>🛒 Mon panier</h3>
     <div id="lignes"></div>
+    <div id="cartcom"></div>
     <div class="total" id="total"></div>
     <button class="btn" id="commander">Commander sur WhatsApp</button>
     <button class="lien" id="vider">Vider le panier</button>
@@ -148,6 +157,7 @@
 
 <script>
 const PRIX_MAILLOT = 20, PRIX_PERSO = 25, PRIX_CRAMPONS = 65, PRIX_GANTS = 40;
+const COMMUNES = ['Gombe', 'Pompage', 'UPN', 'Ngaliema', 'Autre commune (je précise sur WhatsApp)'];
 
 const M = (nom, img, mots, prix) => ({cat:'maillots', nom, img, mots, prix: prix || PRIX_MAILLOT, perso: PRIX_PERSO, ph:''});
 const C = (nom, img, mots, prix) => ({cat:'crampons', nom, img, mots: mots + ' crampons chaussures', prix: prix || PRIX_CRAMPONS, perso: 0, ph:'Pointure (ex : 42)'});
@@ -196,10 +206,12 @@ articles.forEach((a, i) => {
     '<div class="mini" data-voir="' + i + '" data-mots="' + a.mots + '"><img src="' + a.img + '" alt="' + esc(a.nom) + '" loading="lazy"><h4>' + a.nom + '</h4><div class="prix">' + prix + '</div></div>';
 });
 
-// Panier
+// Panier et commune
 let panier = [];
 try { panier = JSON.parse(localStorage.getItem('panier')) || []; } catch (e) { panier = []; }
-function sauver() { try { localStorage.setItem('panier', JSON.stringify(panier)); } catch (e) {} }
+let commune = '';
+try { commune = localStorage.getItem('commune') || ''; } catch (e) { commune = ''; }
+function sauver() { try { localStorage.setItem('panier', JSON.stringify(panier)); localStorage.setItem('commune', commune); } catch (e) {} }
 
 // Fiche produit
 let courant = 0;
@@ -210,12 +222,20 @@ function ouvrirFiche(i) {
   document.getElementById('f-nom').textContent = a.nom;
   document.getElementById('f-prix').textContent = a.prix ? a.prix + ' $' : 'Prix : nous demander';
   document.getElementById('f-perso').textContent = a.perso ? a.perso + ' $ avec personnalisation (nom + numéro)' : '';
-  document.getElementById('f-opts').innerHTML = a.cat === 'maillots'
-    ? '<select class="opt taille"><option>S</option><option>M</option><option>L</option><option>XL</option></select><input class="opt nomnum" placeholder="Nom + numéro (+' + (a.perso - a.prix) + ' $, optionnel)">'
+  document.getElementById('f-err').style.display = 'none';
+  const choixCommune = '<select class="opt commune"><option value="">📍 Choisir la commune de livraison</option>' + COMMUNES.map(c => '<option>' + c + '</option>').join('') + '</select>';
+  const tailleHtml = a.cat === 'maillots'
+    ? '<select class="opt taille"><option>S</option><option>M</option><option>L</option><option>XL</option></select>'
     : '<input class="opt taille" placeholder="' + a.ph + '">';
+  const nomHtml = a.cat === 'maillots'
+    ? '<input class="opt nomnum" placeholder="Nom + numéro (+' + (a.perso - a.prix) + ' $, optionnel)">'
+    : '';
+  document.getElementById('f-opts').innerHTML = tailleHtml + choixCommune + nomHtml;
+  document.querySelector('#f-opts .commune').value = commune;
   document.getElementById('fiche').style.display = 'flex';
 }
 function ajouter() {
+  if (!commune) { document.getElementById('f-err').style.display = 'block'; return; }
   const a = articles[courant];
   const f = document.getElementById('fiche');
   const taille = f.querySelector('.taille').value.trim();
@@ -225,6 +245,8 @@ function ajouter() {
   const ex = panier.find(p => p.nom === a.nom && p.taille === taille && p.perso === perso);
   if (ex) { ex.qte++; } else { panier.push({nom: a.nom, taille: taille, perso: perso, prix: prix, qte: 1}); }
   sauver(); majPanier();
+  const nb = document.getElementById('nb');
+  nb.classList.remove('pop'); void nb.offsetWidth; nb.classList.add('pop');
   const b = document.getElementById('ajouter');
   b.textContent = '✅ Ajouté';
   setTimeout(() => { b.textContent = '🛒 Ajouter au panier'; f.style.display = 'none'; }, 700);
@@ -235,6 +257,7 @@ function majPanier() {
   document.getElementById('nb').textContent = nb;
   const liste = document.getElementById('lignes');
   const totalEl = document.getElementById('total');
+  document.getElementById('cartcom').textContent = commune ? '📍 Livraison : ' + commune : '';
   if (!panier.length) { liste.innerHTML = '<p>Votre panier est vide.</p>'; totalEl.textContent = ''; return; }
   liste.innerHTML = panier.map((p, k) =>
     '<div class="ligne"><div><b>' + esc(p.nom) + '</b><br><small>' + (p.taille ? 'Taille : ' + esc(p.taille) : '') + (p.perso ? ' · ' + esc(p.perso) : '') + '</small><br>' + (p.prix ? p.prix + ' $' : 'prix à confirmer') + '</div><div class="qte"><button data-moins="' + k + '">−</button> ' + p.qte + ' <button data-plus="' + k + '">+</button></div></div>'
@@ -252,10 +275,17 @@ function commander() {
     t += (k + 1) + '. ' + p.nom + (p.taille ? ' (taille ' + p.taille + ')' : '') + (p.perso ? ' [perso : ' + p.perso + ']' : '') + ' x' + p.qte + (p.prix ? ' = ' + (p.prix * p.qte) + ' $' : ' (prix à confirmer)') + '\n';
     if (p.prix) { total += p.prix * p.qte; } else { inconnu = true; }
   });
-  t += 'Total : ' + total + ' $' + (inconnu ? ' + à confirmer' : '') + '\nCommune de livraison : ';
+  t += 'Total : ' + total + ' $' + (inconnu ? ' + à confirmer' : '') + '\nCommune de livraison : ' + commune;
   window.location.href = 'https://wa.me/243824814041?text=' + encodeURIComponent(t);
 }
 
+document.addEventListener('change', e => {
+  if (e.target.classList.contains('commune')) {
+    commune = e.target.value;
+    sauver(); majPanier();
+    document.getElementById('f-err').style.display = 'none';
+  }
+});
 document.addEventListener('click', e => {
   const t = e.target;
   const v = t.closest('[data-voir]');
