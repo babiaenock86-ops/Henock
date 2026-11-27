@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MAILLOT A KIN</title>
+<meta name="description" content="Maillots de clubs, crampons et gants de gardien livrés à Kinshasa. Commande facile sur WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MAILLOT A KIN · Kinshasa">
+<meta property="og:description" content="Maillots de clubs, crampons et gants de gardien livrés à Kinshasa. Commande facile sur WhatsApp.">
+<meta property="og:image" content="https://babiaenock86-ops.github.io/Henock-Babia/apercu.jpg">
+<meta property="og:url" content="https://babiaenock86-ops.github.io/Henock-Babia/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#1a1a8c">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Maillot à Kin">
 <style>
   body { margin: 0; font-family: Arial, sans-serif; color: #12124a; background: linear-gradient(180deg, #ffffff 0%, #e8ebff 45%, #c9d0ff 100%); background-attachment: fixed; }
   .haut { position: sticky; top: 0; z-index: 20; background: #1a1a8c; }
@@ -21,6 +33,12 @@
   section { max-width: 600px; margin: auto; padding: 15px; }
   .aide { text-align: center; opacity: .85; font-size: 14px; margin: 0 0 12px; }
   #vide { text-align: center; display: none; }
+  .install { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #e8ebff; border-radius: 12px; padding: 10px 12px; margin-bottom: 12px; font-size: 14px; font-weight: bold; color: #1a1a8c; }
+  .install button { background: #1a1a8c; color: white; border: 0; border-radius: 8px; padding: 8px 12px; font-weight: bold; font-size: 14px; }
+  .filtres { display: flex; gap: 8px; overflow-x: auto; align-items: center; margin: 0 -15px 12px; padding: 0 15px 4px; }
+  .fm { flex: 0 0 auto; border: 1px solid #1a1a8c; background: #ffffff; color: #1a1a8c; border-radius: 20px; padding: 7px 13px; font-size: 14px; font-weight: bold; }
+  .fm.actif { background: #1a1a8c; color: #ffffff; }
+  .fp { flex: 0 0 auto; border: 1px solid #1a1a8c; background: #ffffff; color: #1a1a8c; border-radius: 20px; padding: 7px 10px; font-size: 14px; font-weight: bold; }
   .bannieres { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -15px; padding: 0 15px 6px; }
   .slide { flex: 0 0 88%; scroll-snap-align: center; display: flex; align-items: stretch; min-height: 150px; border-radius: 16px; overflow: hidden; background: linear-gradient(135deg, #1a1a8c, #3a3ad8); color: white; text-decoration: none; transition: transform .15s; }
   .slide:active { transform: scale(.97); }
@@ -34,7 +52,7 @@
   .rang h2 { text-align: left; margin: 20px 0 8px; font-size: 20px; color: #1a1a8c; }
   #accessoires h2 { text-align: center; color: #1a1a8c; }
   .defil { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x proximity; margin: 0 -15px; padding: 4px 15px 12px; }
-  .mini { flex: 0 0 150px; scroll-snap-align: start; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 10px rgba(26,26,140,.15); transition: transform .15s; }
+  .mini { flex: 0 0 150px; scroll-snap-align: start; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 10px rgba(26,26,140,.15); transition: transform .15s; cursor: pointer; }
   .mini:active { transform: scale(.94); }
   .mini img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
   .mini h4 { font-size: 13px; margin: 8px 8px 4px; height: 34px; overflow: hidden; }
@@ -46,6 +64,10 @@
   .btn { display: block; background: #2f2fc8; color: white; text-align: center; padding: 13px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 12px; }
   button.btn { width: 100%; border: 0; font-size: 16px; box-sizing: border-box; }
   .box { background: #ffffff; border-radius: 14px; padding: 14px; margin-bottom: 20px; box-shadow: 0 3px 10px rgba(26,26,140,.15); }
+  .box h3 { margin-top: 0; }
+  details.box summary { cursor: pointer; font-size: 16px; }
+  .tb { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .tb th, .tb td { border-bottom: 1px solid #dde1ff; padding: 8px; text-align: left; }
   .acc { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
   .acc a { background: #ffffff; border-radius: 14px; padding: 18px 8px; text-align: center; color: #12124a; text-decoration: none; font-weight: bold; box-shadow: 0 3px 10px rgba(26,26,140,.15); transition: transform .15s; }
   .acc a:active { transform: scale(.95); }
@@ -59,6 +81,8 @@
   .feuille { background: #ffffff; color: #12124a; width: 100%; max-width: 600px; max-height: 88vh; overflow: auto; border-radius: 18px 18px 0 0; padding: 16px; box-sizing: border-box; animation: monte .32s ease-out; }
   .feuille h3 { margin: 0 0 10px; color: #1a1a8c; }
   #f-img { width: 100%; max-height: 260px; object-fit: contain; background: #f6f7ff; border-radius: 12px; margin-bottom: 10px; }
+  .vigns { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 10px; }
+  .vign { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; border: 2px solid #c9d0ff; flex: 0 0 auto; cursor: pointer; }
   .ligne { display: flex; justify-content: space-between; gap: 10px; padding: 10px 0; border-bottom: 1px solid #dde1ff; }
   .qte { white-space: nowrap; }
   .qte button { width: 32px; height: 32px; border-radius: 50%; border: 0; font-size: 18px; background: #e8ebff; color: #1a1a8c; }
@@ -69,6 +93,20 @@
   body.cat .defil { flex-wrap: wrap; overflow: visible; }
   body.cat .mini { flex: 0 0 calc(50% - 6px); }
   body.cat .box { display: none; }
+
+  /* Version ordinateur */
+  @media (min-width: 900px) {
+    section { max-width: 1100px; }
+    .chips { justify-content: center; }
+    .bannieres { overflow: visible; }
+    .slide { flex: 1; }
+    .defil { flex-wrap: wrap; overflow: visible; }
+    .mini, body.cat .mini { flex: 0 0 calc(25% - 9px); }
+    .mini:hover { transform: translateY(-4px); }
+    .acc { grid-template-columns: repeat(4, 1fr); }
+    .ov { align-items: center; }
+    .feuille { border-radius: 18px; max-width: 480px; animation: apparait .25s ease; }
+  }
 </style>
 </head>
 <body>
@@ -92,7 +130,22 @@
 </header>
 
 <section>
+  <div class="install" id="install"><span>📲 Ajoute la boutique sur ton écran d'accueil</span><button id="installbtn">Installer</button></div>
+
   <p class="aide">Tape une marque ou un club pour trouver un article (nike, adidas, puma, psg...)</p>
+
+  <div class="filtres">
+    <button class="fm" data-marque="nike">Nike</button>
+    <button class="fm" data-marque="adidas">adidas</button>
+    <button class="fm" data-marque="puma">Puma</button>
+    <select class="fp" id="prixf">
+      <option value="">Tous les prix</option>
+      <option value="a">Moins de 30 $</option>
+      <option value="b">30 à 50 $</option>
+      <option value="c">Plus de 50 $</option>
+    </select>
+  </div>
+
   <p id="vide">Aucun résultat. Écris-nous sur WhatsApp, on peut peut-être le trouver !</p>
 
   <div class="bannieres" id="bannieres"></div>
@@ -113,6 +166,22 @@
     <p>Maillot personnalisé : 50 % à la commande, le reste à la livraison.</p>
   </div>
 
+  <div class="box" id="infos"></div>
+
+  <details class="box" id="tailles">
+    <summary><b>📏 Guide des tailles (maillots)</b></summary>
+    <table class="tb">
+      <tr><th>Taille</th><th>Tour de poitrine</th></tr>
+      <tr><td>S</td><td>88 - 96 cm</td></tr>
+      <tr><td>M</td><td>96 - 104 cm</td></tr>
+      <tr><td>L</td><td>104 - 112 cm</td></tr>
+      <tr><td>XL</td><td>112 - 120 cm</td></tr>
+    </table>
+    <p><small>Mesures indicatives. Un doute ? Écris-nous sur WhatsApp avant de commander.</small></p>
+  </details>
+
+  <div class="box" id="reseaux"></div>
+
   <div id="accessoires">
     <h2>Accessoires sportifs</h2>
     <div class="acc">
@@ -132,6 +201,7 @@
 <div class="ov" id="fiche">
   <div class="feuille">
     <img id="f-img" src="" alt="">
+    <div class="vigns" id="f-vign"></div>
     <h3 id="f-nom"></h3>
     <div class="prix" id="f-prix"></div>
     <div class="perso" id="f-perso"></div>
@@ -155,8 +225,26 @@
 </div>
 
 <script>
+// ===== RÉGLAGES À COMPLÉTER =====
+const CONFIG = {
+  delai: "Délai de livraison : confirmé sur WhatsApp selon ta commune.",
+  frais: "Frais de livraison : confirmés sur WhatsApp selon ta commune.",
+  retour: "Un souci avec ta commande ? Écris-nous sur WhatsApp.",
+  instagram: "",
+  tiktok: "",
+  facebook: "",
+  stats: ""
+};
+// ================================
+
 const PRIX_MAILLOT = 20, PRIX_PERSO = 25, PRIX_CRAMPONS = 65, PRIX_GANTS = 40;
 const COMMUNES = ['Gombe', 'Pompage', 'UPN', 'Ngaliema', 'Autre commune (je précise sur WhatsApp)'];
+
+// Photos supplémentaires : photo principale -> autres photos du même article
+const EXTRA = {
+  '5bbc3053-d6da-4e77-9f07-25e413aa0607.JPG': ['6c629846-2a6e-4942-8138-063f3fd9f6ed.JPG', '34883e99-b3b9-48cd-b14a-de239c94a678.JPG'],
+  '7aaff630-c239-432c-a1bd-2ad28a2cb444.JPG': ['1e1b555b-9449-4ab3-9b7e-ffe665200ff9.JPG']
+};
 
 const M = (nom, img, mots, prix) => ({cat:'maillots', nom, img, mots, prix: prix || PRIX_MAILLOT, perso: PRIX_PERSO, ph:''});
 const C = (nom, img, mots, prix) => ({cat:'crampons', nom, img, mots: mots + ' crampons chaussures', prix: prix || PRIX_CRAMPONS, perso: 0, ph:'Pointure (ex : 42)'});
@@ -188,6 +276,24 @@ const articles = [
 
 function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
+// Statistiques (GoatCounter) : actif seulement si CONFIG.stats est rempli
+if (CONFIG.stats) {
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = '//gc.zgo.at/count.js';
+  s.dataset.goatcounter = 'https://' + CONFIG.stats + '.goatcounter.com/count';
+  document.head.appendChild(s);
+}
+
+// Infos pratiques et réseaux
+document.getElementById('infos').innerHTML =
+  '<h3>Infos pratiques</h3><p>🚚 ' + CONFIG.delai + '</p><p>💵 ' + CONFIG.frais + '</p><p>🔁 ' + CONFIG.retour + '</p><a class="btn" href="https://wa.me/243824814041">💬 Poser une question sur WhatsApp</a>';
+const RS = [['instagram', '📸 Instagram'], ['tiktok', '🎵 TikTok'], ['facebook', '👍 Facebook']].filter(r => CONFIG[r[0]]);
+const bxRs = document.getElementById('reseaux');
+if (RS.length) {
+  bxRs.innerHTML = '<h3>Suivez-nous</h3>' + RS.map(r => '<a class="btn" target="_blank" rel="noopener" href="' + CONFIG[r[0]] + '">' + r[1] + '</a>').join('');
+} else { bxRs.style.display = 'none'; }
+
 // Bannière
 const TITRES = {maillots:'MAILLOTS DE CLUBS', crampons:'CRAMPONS', gants:'GANTS DE GARDIEN'};
 const DES = {maillots: PRIX_MAILLOT, crampons: PRIX_CRAMPONS, gants: PRIX_GANTS};
@@ -201,8 +307,9 @@ document.getElementById('bannieres').innerHTML = ban;
 // Rangées de produits
 articles.forEach((a, i) => {
   const prix = a.prix ? a.prix + ' $' : 'Nous demander';
+  const marque = a.mots.split(' ')[0];
   document.getElementById('liste-' + a.cat).innerHTML +=
-    '<div class="mini" data-voir="' + i + '" data-mots="' + a.mots + '"><img src="' + a.img + '" alt="' + esc(a.nom) + '" loading="lazy"><h4>' + a.nom + '</h4><div class="prix">' + prix + '</div></div>';
+    '<div class="mini" data-voir="' + i + '" data-marque="' + marque + '" data-prix="' + (a.prix || 0) + '" data-mots="' + a.mots + '"><img src="' + a.img + '" alt="' + esc(a.nom) + '" loading="lazy"><h4>' + a.nom + '</h4><div class="prix">' + prix + '</div></div>';
 });
 
 // Panier et commune
@@ -217,7 +324,11 @@ let courant = 0;
 function ouvrirFiche(i) {
   courant = i;
   const a = articles[i];
+  const imgs = [a.img].concat(EXTRA[a.img] || []);
   document.getElementById('f-img').src = a.img;
+  document.getElementById('f-vign').innerHTML = imgs.length > 1
+    ? imgs.map(s => '<img class="vign" data-vign="' + s + '" src="' + s + '" alt="">').join('')
+    : '';
   document.getElementById('f-nom').textContent = a.nom;
   document.getElementById('f-prix').textContent = a.prix ? a.prix + ' $' : 'Prix : nous demander';
   document.getElementById('f-perso').textContent = a.perso ? a.perso + ' $ avec personnalisation (nom + numéro)' : '';
@@ -275,7 +386,8 @@ function commander() {
     if (p.prix) { total += p.prix * p.qte; } else { inconnu = true; }
   });
   t += 'Total : ' + total + ' $' + (inconnu ? ' + à confirmer' : '') + '\nCommune de livraison : ' + commune;
-  window.location.href = 'https://wa.me/243824814041?text=' + encodeURIComponent(t);
+  try { if (window.goatcounter && window.goatcounter.count) { window.goatcounter.count({path: 'commande-whatsapp', title: 'Commande WhatsApp', event: true}); } } catch (e) {}
+  setTimeout(() => { window.location.href = 'https://wa.me/243824814041?text=' + encodeURIComponent(t); }, 250);
 }
 
 document.addEventListener('change', e => {
@@ -287,6 +399,7 @@ document.addEventListener('change', e => {
 });
 document.addEventListener('click', e => {
   const t = e.target;
+  if (t.dataset.vign) { document.getElementById('f-img').src = t.dataset.vign; return; }
   const v = t.closest('[data-voir]');
   if (v) { ouvrirFiche(+v.dataset.voir); return; }
   if (t.dataset.plus !== undefined) { panier[+t.dataset.plus].qte++; sauver(); majPanier(); }
@@ -306,28 +419,43 @@ document.getElementById('commander').addEventListener('click', commander);
 document.getElementById('ajouter').addEventListener('click', ajouter);
 majPanier();
 
-// Recherche et catégories
+// Recherche, catégories, marques et prix
 const champ = document.getElementById('recherche');
-let cat = '';
+let cat = '', marque = '', tranche = '';
+function prixOk(p) {
+  if (tranche === 'a') return p < 30;
+  if (tranche === 'b') return p >= 30 && p <= 50;
+  if (tranche === 'c') return p > 50;
+  return true;
+}
 function filtrer() {
   const q = champ.value.toLowerCase().trim();
-  let trouve = 0;
-  document.querySelectorAll('.mini, .acc a').forEach(el => {
-    const h = el.querySelector('h4');
-    const texte = (el.dataset.mots || '') + ' ' + (h ? h.textContent : el.textContent);
-    const ok = q === '' || texte.toLowerCase().includes(q);
+  const actif = q !== '' || marque !== '' || tranche !== '';
+  document.querySelectorAll('.mini').forEach(el => {
+    const texte = ((el.dataset.mots || '') + ' ' + el.querySelector('h4').textContent).toLowerCase();
+    const ok = (q === '' || texte.includes(q)) && (marque === '' || el.dataset.marque === marque) && prixOk(+el.dataset.prix);
     el.style.display = ok ? '' : 'none';
-    if (ok) { trouve++; }
   });
+  document.querySelectorAll('.acc a').forEach(el => {
+    const ok = marque === '' && tranche === '' && (q === '' || el.textContent.toLowerCase().includes(q));
+    el.style.display = ok ? '' : 'none';
+  });
+  let n = 0;
   document.querySelectorAll('.rang').forEach(r => {
-    const vis = Array.from(r.querySelectorAll('.mini')).some(m => m.style.display !== 'none');
-    r.style.display = (vis && (cat === '' || cat === r.id)) ? '' : 'none';
+    const vis = Array.from(r.querySelectorAll('.mini')).filter(m => m.style.display !== 'none').length;
+    const show = vis > 0 && (cat === '' || cat === r.id);
+    r.style.display = show ? '' : 'none';
+    if (show) { n += vis; }
   });
-  document.getElementById('accessoires').style.display = (cat === '' || cat === 'accessoires') ? '' : 'none';
-  document.getElementById('bannieres').style.display = (q === '' && cat === '') ? '' : 'none';
-  document.getElementById('vide').style.display = (q !== '' && !trouve) ? 'block' : 'none';
-  document.body.classList.toggle('cat', cat !== '');
+  const accVis = Array.from(document.querySelectorAll('.acc a')).filter(a => a.style.display !== 'none').length;
+  const accShow = accVis > 0 && (cat === '' || cat === 'accessoires');
+  document.getElementById('accessoires').style.display = accShow ? '' : 'none';
+  if (accShow) { n += accVis; }
+  document.getElementById('bannieres').style.display = (!actif && cat === '') ? '' : 'none';
+  document.getElementById('vide').style.display = ((actif || cat !== '') && n === 0) ? 'block' : 'none';
+  document.body.classList.toggle('cat', actif || cat !== '');
   document.querySelectorAll('.chips a').forEach(a => a.classList.toggle('actif', a.dataset.cat === cat));
+  document.querySelectorAll('.fm').forEach(b => b.classList.toggle('actif', b.dataset.marque === marque));
 }
 champ.addEventListener('input', filtrer);
 document.querySelectorAll('.chips a').forEach(a => a.addEventListener('click', e => {
@@ -336,7 +464,25 @@ document.querySelectorAll('.chips a').forEach(a => a.addEventListener('click', e
   filtrer();
   window.scrollTo(0, 0);
 }));
+document.querySelectorAll('.fm').forEach(b => b.addEventListener('click', () => {
+  marque = (marque === b.dataset.marque) ? '' : b.dataset.marque;
+  filtrer();
+}));
+document.getElementById('prixf').addEventListener('change', e => { tranche = e.target.value; filtrer(); });
 filtrer();
+
+// Installer la boutique comme une appli
+let invite = null;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); invite = e; });
+const dejaInstallee = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+if (dejaInstallee) { document.getElementById('install').style.display = 'none'; }
+document.getElementById('installbtn').addEventListener('click', () => {
+  if (invite) { invite.prompt(); invite = null; }
+  else { alert("Sur iPhone : touche le bouton Partager de Safari, puis « Sur l'écran d'accueil ».\nSur Android : ouvre le menu ⋮ de Chrome, puis « Ajouter à l'écran d'accueil »."); }
+});
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });
+}
 </script>
 </body>
 </html>
