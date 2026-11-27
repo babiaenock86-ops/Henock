@@ -65,6 +65,10 @@
   .total { font-size: 20px; font-weight: bold; margin: 14px 0; color: #1a1a8c; }
   #cartcom { margin-top: 10px; font-weight: bold; }
   .lien { background: none; border: 0; color: #1a1a8c; opacity: .8; text-decoration: underline; font-size: 15px; margin: 10px 14px 0 0; padding: 0; }
+  .chips a.actif { background: white; color: #1a1a8c; }
+  body.cat .defil { flex-wrap: wrap; overflow: visible; }
+  body.cat .mini { flex: 0 0 calc(50% - 6px); }
+  body.cat .box { display: none; }
 </style>
 </head>
 <body>
@@ -75,10 +79,10 @@
     <button class="panierbtn" id="ouvrir" aria-label="Panier"><svg viewBox="0 0 24 24"><path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM1 2v2h2l3.6 7.6-1.4 2.4A2 2 0 0 0 7 17h12v-2H7.4l1.1-2h7.5a2 2 0 0 0 1.7-1l3.6-6.5A1 1 0 0 0 20.4 4H5.2l-.9-2H1z"/></svg><span id="nb">0</span></button>
   </div>
   <div class="chips">
-    <a href="#maillots">Maillots</a>
-    <a href="#crampons">Crampons</a>
-    <a href="#gants">Gants</a>
-    <a href="#accessoires">Accessoires</a>
+    <a href="#" data-cat="maillots">Maillots</a>
+    <a href="#" data-cat="crampons">Crampons</a>
+    <a href="#" data-cat="gants">Gants</a>
+    <a href="#" data-cat="accessoires">Accessoires</a>
   </div>
 </div>
 
@@ -107,8 +111,6 @@
     <p>Orange Money et M-Pesa acceptés.</p>
     <p>Maillot sans personnalisation : paiement avant la livraison.</p>
     <p>Maillot personnalisé : 50 % à la commande, le reste à la livraison.</p>
-  </div>
-  
   </div>
 
   <div id="accessoires">
@@ -304,8 +306,9 @@ document.getElementById('commander').addEventListener('click', commander);
 document.getElementById('ajouter').addEventListener('click', ajouter);
 majPanier();
 
-// Recherche
+// Recherche et catégories
 const champ = document.getElementById('recherche');
+let cat = '';
 function filtrer() {
   const q = champ.value.toLowerCase().trim();
   let trouve = 0;
@@ -318,12 +321,21 @@ function filtrer() {
   });
   document.querySelectorAll('.rang').forEach(r => {
     const vis = Array.from(r.querySelectorAll('.mini')).some(m => m.style.display !== 'none');
-    r.style.display = vis ? '' : 'none';
+    r.style.display = (vis && (cat === '' || cat === r.id)) ? '' : 'none';
   });
-  document.getElementById('bannieres').style.display = q === '' ? '' : 'none';
+  document.getElementById('accessoires').style.display = (cat === '' || cat === 'accessoires') ? '' : 'none';
+  document.getElementById('bannieres').style.display = (q === '' && cat === '') ? '' : 'none';
   document.getElementById('vide').style.display = (q !== '' && !trouve) ? 'block' : 'none';
+  document.body.classList.toggle('cat', cat !== '');
+  document.querySelectorAll('.chips a').forEach(a => a.classList.toggle('actif', a.dataset.cat === cat));
 }
 champ.addEventListener('input', filtrer);
+document.querySelectorAll('.chips a').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  cat = (cat === a.dataset.cat) ? '' : a.dataset.cat;
+  filtrer();
+  window.scrollTo(0, 0);
+}));
 filtrer();
 </script>
 </body>
