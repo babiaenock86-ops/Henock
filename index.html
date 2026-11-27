@@ -225,16 +225,17 @@
 </div>
 
 <script>
-// ===== RÉGLAGES À COMPLÉTER =====
-const CONFIG = {
-  delai: "Délai de livraison : confirmé sur WhatsApp selon ta commune.",
+// ===== RÉGLAGES À COMPLÉTER =====script>
+/const CONFIG = {
+  delai: "Délai de livraison : 24 h.",
   frais: "Frais de livraison : confirmés sur WhatsApp selon ta commune.",
   retour: "Un souci avec ta commande ? Écris-nous sur WhatsApp.",
-  instagram: "",
-  tiktok: "",
+  instagram: "https://www.instagram.com/maillot_a_kin",
+  tiktok: "https://www.tiktok.com/@just_flemme",
   facebook: "",
   stats: ""
 };
+
 // ================================
 
 const PRIX_MAILLOT = 20, PRIX_PERSO = 25, PRIX_CRAMPONS = 65, PRIX_GANTS = 40;
@@ -287,7 +288,7 @@ if (CONFIG.stats) {
 
 // Infos pratiques et réseaux
 document.getElementById('infos').innerHTML =
-  '<h3>Infos pratiques</h3><p>🚚 ' + CONFIG.delai + '</p><p>💵 ' + CONFIG.frais + '</p><p>🔁 ' + CONFIG.retour + '</p><a class="btn" href="https://wa.me/243824814041">💬 Poser une question sur WhatsApp</a>';
+  '<h3>Infos pratiques</h3><p>🚚 ' + CONFIG.delai + '</p><p>💵 ' + CONFIG.frais + '</p><p>🔁 ' + CONFIG.retour + '</p><a class="btn" href="https://wa.me/243824814041"> Poser une question sur WhatsApp</a>';
 const RS = [['instagram', '📸 Instagram'], ['tiktok', '🎵 TikTok'], ['facebook', '👍 Facebook']].filter(r => CONFIG[r[0]]);
 const bxRs = document.getElementById('reseaux');
 if (RS.length) {
