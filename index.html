@@ -448,7 +448,7 @@ function filtrer() {
     if (show) { n += vis; }
   });
   const accVis = Array.from(document.querySelectorAll('.acc a')).filter(a => a.style.display !== 'none').length;
-  const accShow = accVis > 0 && (cat === '' || cat === 'accessoires');
+  const accShow = accVis > 0 && (cat === 'accessoires' || (cat === '' && q !== ''));
   document.getElementById('accessoires').style.display = accShow ? '' : 'none';
   if (accShow) { n += accVis; }
   document.getElementById('bannieres').style.display = (!actif && cat === '') ? '' : 'none';
